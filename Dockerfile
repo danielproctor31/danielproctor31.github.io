@@ -9,7 +9,7 @@ WORKDIR /tmp
 # Copy source files
 RUN mkdir -p /src
 WORKDIR /src
-COPY ./src .
+COPY . .
 
 # Build site
 RUN npm ci && \ 

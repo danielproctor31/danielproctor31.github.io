@@ -3,9 +3,9 @@
   "version": "4.1.0",
   "private": false,
   "scripts": {
-    "dev": "npx tinacms dev -c \"astro dev\"",
+    "dev": "tinacms dev -c \"astro dev\"",
     "build": "astro build && jampack ./dist",
-    "tina:build": "npx tinacms build",
+    "tina:build": "tinacms build",
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
