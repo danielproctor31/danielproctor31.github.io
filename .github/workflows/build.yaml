@@ -35,14 +35,16 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
-      - name: Build
+      - name: TinaCMS
         env:
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
           TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
           TINA_INDEXER_TOKEN: ${{ secrets.TINA_INDEXER_TOKEN }}
           TINA_BRANCH: ${{ secrets.TINA_BRANCH }}
         run: |
-          npm run tina:build && \
+          npm run tina:build
+      - name: Build
+        run: |
           npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
