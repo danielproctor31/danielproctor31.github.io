@@ -22,7 +22,7 @@ export default defineConfig({
   media: {
     tina: {
       mediaRoot: "",
-      publicFolder: "dist",
+      publicFolder: "public",
     },
   },
   search: {
