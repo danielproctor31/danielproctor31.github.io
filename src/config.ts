@@ -37,12 +37,6 @@ export const SOCIALS: SocialObjects = [
     active: true,
   },
   {
-    name: "Mail",
-    href: "mailto:hello@danielproctor.dev",
-    linkTitle: `Email`,
-    active: true,
-  },
-  {
     name: "RSS",
     href: "/rss.xml",
     linkTitle: `RSS`,
