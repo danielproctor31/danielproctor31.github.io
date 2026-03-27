@@ -6,6 +6,12 @@ on:
       - main
     paths-ignore:
       - 'README.md'
+      - 'LICENSE'
+      - 'CHANGELOG.md'
+      - '.devcontainer/**'
+      - '.github/**'
+      - 'Dockerfile'
+      - 'docker-compose.yml'
 
   workflow_dispatch:
 
@@ -34,10 +40,10 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
       - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && pnpm i || true"
       - name: Build
         run: |
-          npm run build
+          pnpm run build
       - name: TinaCMS
         env:
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
@@ -45,7 +51,7 @@ jobs:
           TINA_INDEXER_TOKEN: ${{ secrets.TINA_INDEXER_TOKEN }}
           TINA_BRANCH: ${{ secrets.TINA_BRANCH }}
         run: |
-          npm run tina:build
+          pnpm run tina:build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

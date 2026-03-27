@@ -1,4 +1,4 @@
-FROM node:20-alpine as build
+FROM node:24-alpine as build
 
 ARG TARGETOS linux 
 ARG TARGETARCH amd64
@@ -11,9 +11,12 @@ RUN mkdir -p /src
 WORKDIR /src
 COPY . .
 
+# enable pnpm
+RUN npm install -g pnpm
+
 # Build site
-RUN npm ci && \ 
-        npm run build
+RUN pnpm ci && \ 
+        pnpm run build
 
 FROM nginx:latest as publish
 # Copy static files
