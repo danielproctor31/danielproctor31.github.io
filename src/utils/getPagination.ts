@@ -17,7 +17,7 @@ const getPagination = <T>({
 
   const currentPage = isIndex
     ? 1
-    : page && !isNaN(Number(page)) && totalPagesArray.includes(Number(page))
+    : page && !isNaN(Number(page)) && totalPagesArray.includes(String(page))
       ? Number(page)
       : 0;
 
