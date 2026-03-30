@@ -46,6 +46,7 @@ jobs:
     pool:
       vmImage: "ubuntu-latest"
     steps:
+      - checkout: none
       - script: |
           set -e
           echo "Fetching latest Dependabot CLI..."
@@ -126,65 +127,11 @@ Add a variable:
 
 Authorize the pipeline to use this variable group.
 
-## Repository permissions to verify
-
-There are two identities people usually mix up here:
-
-1. PAT owner identity
-2. Pipeline Build Service identity
-
-For this PAT-based Dependabot flow, the PAT owner needs repo rights to update code and work with pull requests. In practice, ensure the PAT owner has effective repository permissions equivalent to read/contribute/create branch and pull request contribution capabilities.
-
-Build Service write permissions are not required for Dependabot to create update PRs when Dependabot itself is using the PAT for Git/API operations.
-
-Build Service permissions still matter for pipeline resource access (for example checkout behavior, cross-project repository access, feeds, and other Azure DevOps resources).
-
-## Optional hardening
-
-If this job does not need to check out the repository in the agent workspace, you can disable checkout:
-
-```yaml
-jobs:
-  - job: RunDependabot
-    steps:
-      - checkout: none
-      - script: |
-          # Dependabot commands
-```
-
-This reduces the permissions needed for the pipeline job token itself.
-
 ## Paid alternative: GitHub Advanced Security for Azure DevOps
 
 [GitHub Advanced Security for Azure DevOps](https://azure.microsoft.com/en-us/products/devops/github-advanced-security) is a paid option that adds native security capabilities in Azure DevOps, including dependency scanning alerts, code scanning, and secret scanning.
 
 It is a good alternative if your goal is integrated vulnerability detection and governance in Azure DevOps. It is not the same as this Dependabot CLI automation pattern, which is focused on dependency update execution and PR workflow automation.
-
-## Troubleshooting
-
-### `AZURE_ACCESS_TOKEN is empty`
-
-Make sure:
-
-- The variable exists in the variable group
-- The variable group is linked/authorized for the pipeline
-- The variable name matches exactly
-
-### Dependabot cannot access the repo
-
-Check:
-
-- `repo` format in `input.yml`
-- PAT is valid and not expired
-- PAT owner still has required repository permissions
-
-### No pull requests created
-
-Check:
-
-- Whether updates are actually available for the configured package manager/directory
-- Branch policies that may block completion behavior
-- CLI output logs for update attempts and API calls
 
 ## Conclusion
 
