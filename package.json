@@ -36,7 +36,7 @@
     "@astrojs/tailwind": "^6.0.2",
     "@divriots/jampack": "^0.34.1",
     "@tailwindcss/typography": "^0.5.19",
-    "@tinacms/cli": "^2.2.0",
+    "@tinacms/cli": "^2.2.1",
     "@types/node": "^25.5.0",
     "@types/react": "^19.2.14",
     "@typescript-eslint/parser": "^8.57.2",
