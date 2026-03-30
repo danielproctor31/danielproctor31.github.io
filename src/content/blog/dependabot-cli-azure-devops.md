@@ -4,7 +4,7 @@ description: "Set up Dependabot CLI in Azure DevOps to automate dependency updat
 pubDatetime: 2026-03-30
 author: Daniel Proctor
 featured: false
-draft: true
+draft: false
 tags:
   - azure-devops
   - dependabot
