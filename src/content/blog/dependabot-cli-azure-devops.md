@@ -1,6 +1,6 @@
 ---
-title: "Run Dependabot in Azure DevOps with a Scheduled Pipeline"
-description: "Set up Dependabot CLI in Azure DevOps to automate dependency update pull requests, including PAT, variable group, and repository permission setup."
+title: "Run Dependabot in Azure DevOps"
+description: "Set up Dependabot CLI in Azure DevOps to automate dependency update pull requests."
 pubDatetime: 2026-03-30
 author: Daniel Proctor
 featured: false
